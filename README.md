@@ -191,7 +191,8 @@ In general:
   }
   ```
 
-- For method declarations, use 4 space indentation for its parameters when they don't fit in a single line. Return types can be either on the same line as the last parameter, or put to next line with 2 space indent.
+- For method declarations, use 4 space indentation for their parameters and put each in each line when the parameters don't fit in two lines. Return types can be either on the same line as the last parameter, or start a new line with 2 space indent.
+
   ```scala
   def newAPIHadoopFile[K, V, F <: NewInputFormat[K, V]](
       path: String,
@@ -213,7 +214,8 @@ In general:
   }
   ```
 
-- For classes whose header doesn't fit in a single line, put the extend on the next line with 2 space indent, and add a blank line after class header.
+- For classes whose header doesn't fit in two lines, use 4 space indentation for its parameters, put each in each line, put the extends on the next line with 2 space indent, and add a blank line after class header.
+
   ```scala
   class Foo(
       val param1: String,  // 4 space indent for parameters
@@ -224,6 +226,22 @@ In general:
 
     def firstMethod(): Unit = { ... }  // blank line above
   }
+  ```
+
+- For method and class constructor invocations, use 2 space indentation for its parameters and put each in each line when the parameters don't fit in two lines.
+
+  ```scala
+  foo(
+    someVeryLongFieldName,  // 2 space indent here
+    andAnotherVeryLongFieldName,
+    "this is a string",
+    3.1415)
+
+  new Bar(
+    someVeryLongFieldName,  // 2 space indent here
+    andAnotherVeryLongFieldName,
+    "this is a string",
+    3.1415)
   ```
 
 - Do NOT use vertical alignment. They draw attention to the wrong parts of the code and make the aligned code harder to change in the future.
@@ -247,7 +265,7 @@ In general:
     - Exception: A blank line between two consecutive fields (having no other code between them) is optional. Such blank lines are used as needed to create logical groupings of fields.
   - Within method bodies, as needed to create logical groupings of statements.
   - Optionally before the first member or after the last member of the class (neither encouraged nor discouraged).
-- Use one or two blank line(s) to separate class definitions.
+- Use one or two blank line(s) to separate class or object definitions.
 - Excessive number of blank lines is discouraged.
 
 
@@ -499,7 +517,7 @@ case class Person(name: String, var age: Int)
 
 // To change values, use the copy constructor to create a new instance
 val p1 = Person("Peter", 15)
-val p2 = p2.copy(age = 16)
+val p2 = p1.copy(age = 16)
 ```
 
 
